@@ -22,6 +22,7 @@ Route::controller(\App\Http\Controllers\PageController::class)->group(function()
     Route::get("/blog","blog")->name("blog");
     Route::get("/catalog/{slug}","catlogDetail")->name("cat.detail");
     Route::get("/catalog/item/{id}","itemDetail")->name("cat.show");
+    Route::get("/catlog/search/","search")->name("cat.search");
 
 });
 

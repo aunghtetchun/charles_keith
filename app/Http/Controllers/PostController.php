@@ -53,7 +53,7 @@ class PostController extends Controller
         $post->sale_price=$request->sale_price;
         $post->detail=$request->detail;
         $post->color_name=$request->color_name;
-//        $post->color_code='AACCESS_CODE_ID_'.$request->color_name;
+        $post->item_code=$request->item_code;
         $post->user_id = Auth::id();
         $post->category_id = $request->category;
 
@@ -113,7 +113,7 @@ class PostController extends Controller
         $post->sale_price=$request->sale_price;
         $post->detail=$request->detail;
         $post->color_name=$request->color_name;
-//        $post->color_code='AACCESS_CODE_ID_'.$request->color_name;
+        $post->item_code=$request->item_code;
         $post->user_id = Auth::id();
         $post->category_id = $request->category;
         if ($request->color_photo){

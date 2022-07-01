@@ -23,7 +23,7 @@
 
                 @endforelse
             </ul>
-            <form action="{{ route('post.index') }}" method="get">
+            <form action="{{ route('cat.search') }}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" name="keyword" placeholder="Search Post">
                     <button class="btn btn-secondary">
@@ -31,6 +31,8 @@
                     </button>
                 </div>
             </form>
+
+
         </div>
     </div>
 </nav>

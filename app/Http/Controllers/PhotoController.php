@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePhotoRequest;
 use App\Http\Resources\PhotoResource;
 use App\Models\Photo;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -36,7 +37,8 @@ class PhotoController extends Controller
             $photo->lg = asset('storage/lg_'.$photo->name);
             return $photo;
         });
-        $posts = Post::get();
+
+        $posts = Post::latest()->get();
         return view('photo.create',compact('photos','posts'));
     }
 
@@ -48,21 +50,24 @@ class PhotoController extends Controller
      */
     public function store(StorePhotoRequest $request)
     {
-        $newName = uniqid()."_"."photo.".$request->upload->extension();
+        foreach($request->file('upload') as $image)
+        {
+            $newName = uniqid()."_"."photo.".$image->extension();
 
-        $thumbnail = Image::make($request->upload)->fit(300,300);
-        $thumbnail->save(public_path("storage/thumbnail_".$newName));
+            $thumbnail = Image::make($image)->fit(300,300);
+            $thumbnail->save(public_path("storage/thumbnail_".$newName));
 
-        $md = Image::make($request->upload)->resize(900, null, fn($constraint)=>$constraint->aspectRatio());
-        $md->save(public_path("storage/md_".$newName));
+            $md = Image::make($image)->resize(900, null, fn($constraint)=>$constraint->aspectRatio());
+            $md->save(public_path("storage/md_".$newName));
 
-        $lg = Image::make($request->upload)->resize(1500, null,fn($constraint)=>$constraint->aspectRatio());
-        $lg->save(public_path("storage/lg_".$newName));
+            $lg = Image::make($image)->resize(1500, null,fn($constraint)=>$constraint->aspectRatio());
+            $lg->save(public_path("storage/lg_".$newName));
 
-        $photo = new Photo();
-        $photo->name = $newName;
-        $photo->post_id=$request->post;
-        $photo->save();
+            $photo = new Photo();
+            $photo->name = $newName;
+            $photo->post_id=$request->post;
+            $photo->save();
+        }
 
         return redirect()->route('photo.create')->with('status','Photo Upload Successfully');
 

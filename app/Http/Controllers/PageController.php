@@ -27,8 +27,17 @@ class PageController extends Controller
 
     public function itemDetail($id){
         $post=Post::where("id",$id)->first();
-        $colors=Post::where("title",$post->title)->get();
+        $colors=Post::where("item_code",$post->item_code)->get();
         return view('item-detail',compact('post','colors'));
+    }
+
+    public function search()
+    {
+        $posts = Post::when(request('keyword'),fn($q)=>$q->search())
+            ->latest("id")->get();
+
+        $pid=[];
+        return view('catlog-detail',compact('posts','pid'));
     }
 
     public function about(){

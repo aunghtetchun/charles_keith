@@ -21,9 +21,9 @@
                 <!-- Gallery -->
             </div>
             <div class="col-lg-4 ">
-                <h5>{{$post->title}}</h5>
-                <small class="text-black-50 text-uppercase my-2" style="font-size: 11px">Item No. CK2-80151138_{{ $post->color_name }}</small>
-                <p class="fw-bold ">$ {{ $post->price }}</p>
+                <h6 class="fw-bold">{{$post->title}}</h6>
+                <small class="text-black-50 text-uppercase my-2" style="font-size: 11px">Item No. {{$post->item_code}}_{{$post->color_name }}</small>
+                <small class="fw-bold d-block mt-2">$ {{ $post->price }}</small>
                 <div class="text-start mt-2">
                     <p class="small mb-0">Color :
                         <span class="fw-bold small">{{ $post->color_name }}</span>
@@ -41,7 +41,7 @@
                     </p>
                     @forelse($post->stock as  $s)
                         @if ($s->stock > 100)
-                        <button type="button" class="btn border mt-3 me-4 border-2 btn-sm border-success  position-relative">
+                        <button type="button" class="btn border mt-3 me-4 pt-2 border-2 btn-sm border-success  position-relative">
                             {{ $s->size }}
 
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">

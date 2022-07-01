@@ -107,7 +107,18 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <div class="mb-3">
+                            <label class="form-label" for="item_code">Item Code</label>
+                            <input
+                                type="text"
+                                class="form-control @error('item_code') is-invalid @enderror"
+                                name="item_code"
+                                id="item_code"
+                                value="{{ old('item_code') }}">
+                            @error('item_code')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label class="form-label" for="description">Post Description</label>
                             <textarea

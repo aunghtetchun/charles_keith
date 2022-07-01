@@ -4,11 +4,12 @@
 
         <div class="row justify-content-center m-5" id="product" style="padding-left: 90px; padding-right: 90px;">
             <div class="col-12 col-lg-3 pt-2">
-                <div class="card" style="width: 18rem;">
+                <div class="card" >
 
                     <div class="card-body">
                         <h6 class="card-title">CATEGORY</h6>
                         <hr/>
+
                         @forelse($pid as $p)
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -17,10 +18,26 @@
                                 </label>
                             </div>
                         @empty
+                            @forelse($posts as $p)
+                                @if(!isset($temp)  ||  !($temp == $p->category->title))
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <small>  {{ $p->category->title }} </small>
+                                    </label>
+                                </div>
+                                    <p class="d-none">{{ $temp=$p->category->title }}</p>
+                                @endif
+
+                            @empty
+
+                                @endforelse
+
                         @endforelse
+
                     </div>
                 </div>
-                <div class="card my-5" style="width: 18rem;">
+                <div class="card my-5" >
 
                     <div class="card-body">
                         <h6 class="card-title">COLOR</h6>
@@ -75,6 +92,9 @@
                         </a>
                     </div>
                 @empty
+                    <div class="col-12 mt-2">
+                        <h3 class="text-center col-12 alert alert-danger">There is no result...</h3>
+                    </div>
                 @endforelse
             </div>
         </div>

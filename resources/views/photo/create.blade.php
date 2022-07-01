@@ -42,8 +42,9 @@
                                 <input
                                     type="file"
                                     class="form-control @error('upload') is-invalid @enderror"
-                                    name="upload"
+                                    name="upload[]"
                                     id="photo"
+                                    multiple
                                     accept="image/jpeg,image/png"
                                 >
                                 @error('upload')
