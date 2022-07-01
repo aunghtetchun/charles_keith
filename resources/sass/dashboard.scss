@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;600&family=Kdam+Thmor+Pro&display=swap');
+$font-family-sans-serif : 'Anek Malayalam', sans-serif;
+
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+$body-bg: #f1f1f1;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    //xxl: 1320px
+);
+
+
+//$breadcrumb-font-size: 12px;
+
+$border-radius: 0.5rem;
+$btn-padding-x : 1.5rem;
+
+
+
+$dark-soft:#babec2;
+
+
+@import "~bootstrap/scss/bootstrap";
+
+@import '~sweetalert2/src/sweetalert2.scss';
+
+.w-60{
+    width: 60%;
+}
+
+.sidebar {
+    .bi{
+        margin-right: 5px;
+    }
+    .list-group-item-action{
+        &.active{
+            background-color: $dark-soft;
+            border-color: $dark-soft;
+        }
+    }
+}
+
+.super-small{
+    font-size: 12px !important;
+}
+
+p.date,p.time{
+    font-size: 13px;
+}
+
+.bg-dark-soft{
+    background-color: $dark-soft;
+}
+
+.img-preview-box{
+
+}
+
+.img-preview-box:hover .img-preview-info{
+    bottom: 0;
+}
+
+.img-preview-info{
+    transition: 0.3s;
+    bottom: -35px;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.modal-preview-img{
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.igc-icon{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    object-fit: cover;
+    object-position: center;
+}

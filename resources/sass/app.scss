@@ -1,0 +1,31 @@
+
+//@import 'theme/variables';
+
+
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+$nav-link-padding-x : 1.5rem !important;
+$btn-padding-x : 1.5rem;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    //xl: 1140px,
+    //xxl: 1320px
+);
+
+@import '~bootstrap/scss/bootstrap';
+//@import 'theme/lumen';
+
+.hero-slide-img{
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-card-img{
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
